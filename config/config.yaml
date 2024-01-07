@@ -1,0 +1,8 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  # Root directory for data ingestion artifacts
+  root_dir: artifacts/data_ingestion
+
+  # Path to the raw data file for data ingestion
+  raw_data_path: artifacts/data_ingestion/raw_data.csv

@@ -1,0 +1,17 @@
+# This YAML configuration defines stages for a data pipeline
+
+stages:
+  # Data Ingestion Stage
+  data_ingestion:
+    # Command to execute for the data_ingestion stage
+    cmd:
+      - python src/Concrete_strength_prediction/pipeline/stage_01_data_ingestion.py
+
+    # Dependencies required for the data_ingestion stage
+    deps:
+      - src/Concrete_strength_prediction/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+
+    # Output artifacts produced by the data_ingestion stage
+    outs:
+      - artifacts/data_ingestion\
