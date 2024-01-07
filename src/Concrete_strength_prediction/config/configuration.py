@@ -1,6 +1,6 @@
 from src.Concrete_strength_prediction.utils.constant import *
 from src.Concrete_strength_prediction.utils.common import read_yaml,create_directories
-from src.Concrete_strength_prediction.entity.config_entity import DataIngestionConfig
+from src.Concrete_strength_prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig
 
 class ConfigurationManager:
     def __init__(self,
@@ -37,4 +37,28 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+        """
+        Get DataValidationConfig based on the configuration.
+
+        This method extracts the relevant information from the configuration,
+        creates a DataValidationConfig instance, and returns it.
+
+        Returns:
+        - DataValidationConfig: An instance of DataValidationConfig.
+        """
+        config = self.config.data_validation
+        schema = self.schema.columns
+        create_directories([config.root_dir])
+
+        data_validation_config = DataValidationConfig(
+            root_dir=config.root_dir,
+            raw_data_path=config.raw_data_path,
+            validation_status=config.validation_status,
+            schema=schema
+        )
+
+        return data_validation_config
+
 

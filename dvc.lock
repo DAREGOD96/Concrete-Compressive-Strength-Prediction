@@ -6,8 +6,8 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 76198529042944671083b7a5e0f51a1c
-      size: 239
+      md5: 1414805a89e0672096a92bf1229b21a3
+      size: 551
     - path: src/Concrete_strength_prediction/pipeline/stage_01_data_ingestion.py
       hash: md5
       md5: 6fc116132c65e4865adb025546db9c66
@@ -17,4 +17,30 @@ stages:
       hash: md5
       md5: a08aa212bff32cd659a0d5f9e44a5f92.dir
       size: 35689
+      nfiles: 1
+  data_validation:
+    cmd:
+    - python src/Concrete_strength_prediction/pipeline/stage_02_data_validation.py
+    deps:
+    - path: artifacts/data_ingestion/raw_data.csv
+      hash: md5
+      md5: 6d3c66e8e58ba960ff0dca182c5f7546
+      size: 35689
+    - path: config/config.yaml
+      hash: md5
+      md5: 1414805a89e0672096a92bf1229b21a3
+      size: 551
+    - path: schema.yaml
+      hash: md5
+      md5: 989a9a84513afe0b4898587e71259213
+      size: 293
+    - path: src/Concrete_strength_prediction/pipeline/stage_02_data_validation.py
+      hash: md5
+      md5: 10564465bb591da3c1c585d9f0641486
+      size: 1544
+    outs:
+    - path: artifacts/data_validation
+      hash: md5
+      md5: 0ccb3ea5849272ff03be5ab71786b9ff.dir
+      size: 23
       nfiles: 1

@@ -15,3 +15,20 @@ stages:
     # Output artifacts produced by the data_ingestion stage
     outs:
       - artifacts/data_ingestion\
+
+  # Data validation Stage
+  data_validation:
+    # Command to execute for the data_validation stage
+    cmd:
+      - python src/Concrete_strength_prediction/pipeline/stage_02_data_validation.py
+
+    # Dependencies required for the data_validation stage
+    deps:
+      - src/Concrete_strength_prediction/pipeline/stage_02_data_validation.py
+      - config/config.yaml
+      - artifacts/data_ingestion/raw_data.csv
+      - schema.yaml
+
+    # Output artifacts produced by the data_validation stage
+    outs:
+      - artifacts/data_validation

@@ -6,3 +6,14 @@ data_ingestion:
 
   # Path to the raw data file for data ingestion
   raw_data_path: artifacts/data_ingestion/raw_data.csv
+
+
+data_validation:
+  # Root directory for data validation artifacts
+  root_dir: artifacts/data_validation
+
+  # Path to the raw data for validation
+  raw_data_path: artifacts/data_ingestion/raw_data.csv
+
+  # Path to store the validation status
+  validation_status: artifacts/data_validation/status.txt
