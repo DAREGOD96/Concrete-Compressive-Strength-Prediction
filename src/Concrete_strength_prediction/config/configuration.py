@@ -1,6 +1,6 @@
 from src.Concrete_strength_prediction.utils.constant import *
 from src.Concrete_strength_prediction.utils.common import read_yaml,create_directories
-from src.Concrete_strength_prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig
+from src.Concrete_strength_prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig
 
 class ConfigurationManager:
     def __init__(self,
@@ -60,5 +60,31 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        """
+        Get the configuration for data transformation.
+
+        Returns:
+        - DataTransformationConfig: An instance of the DataTransformationConfig class representing
+          the configuration for data transformation.
+        """
+        config = self.config.data_transformation
+        columns_name = self.schema.columns
+        target_columns_name = self.schema.target_columns
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            raw_data_path=config.raw_data_path,
+            preprocessor=config.preprocessor,
+            train_data=config.train_data,
+            test_data=config.test_data,
+            columns_name=columns_name,
+            target_columns_name=target_columns_name
+        )
+
+        return data_transformation_config
 
 

@@ -8,6 +8,7 @@ data_ingestion:
   raw_data_path: artifacts/data_ingestion/raw_data.csv
 
 
+
 data_validation:
   # Root directory for data validation artifacts
   root_dir: artifacts/data_validation
@@ -17,3 +18,21 @@ data_validation:
 
   # Path to store the validation status
   validation_status: artifacts/data_validation/status.txt
+
+
+data_transformation:
+  # Root directory for data transformation artifacts
+  root_dir: artifacts/data_transformation
+
+  # Path to the raw data file from data ingestion
+  raw_data_path: artifacts/data_ingestion/raw_data.csv
+
+  # Path to the saved preprocessor (ColumnTransformer) object
+  preprocessor: artifacts/data_transformation/preprocessor.pkl
+
+  # Path to the CSV file storing the training data after transformation
+  train_data: artifacts/data_transformation/train.csv
+
+  # Path to the CSV file storing the test data after transformation
+  test_data: artifacts/data_transformation/test.csv
+
