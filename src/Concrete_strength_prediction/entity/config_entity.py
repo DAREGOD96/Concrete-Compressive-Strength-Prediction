@@ -54,3 +54,23 @@ class DataTransformationConfig:
     test_data: Path
     columns_name: dict
     target_columns_name: dict
+
+
+@dataclass
+class ModelTrainerConfig:
+    """
+    Configuration class for the ModelTrainer.
+
+    Attributes:
+    - root_dir (Path): Root directory for storing artifacts related to model training.
+    - train_data (Path): Path to the training data CSV file.
+    - test_data (Path): Path to the test data CSV file.
+    - best_model_path (str): Path to save the best-performing model.
+    - params (Dict): Dictionary containing hyperparameter search space for different models.
+    """
+
+    root_dir: Path
+    train_data: Path
+    test_data: Path
+    best_model_path: str
+    params: dict

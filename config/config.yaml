@@ -36,3 +36,17 @@ data_transformation:
   # Path to the CSV file storing the test data after transformation
   test_data: artifacts/data_transformation/test.csv
 
+
+model_training:
+  # Root directory for storing artifacts related to model training
+  root_dir: artifacts/model_training
+
+  # Path to the training data CSV file
+  train_data: artifacts/data_transformation/train.csv
+
+  # Path to the test data CSV file
+  test_data: artifacts/data_transformation/test.csv
+
+  # Path to save the best-performing model
+  best_model_path: artifacts/model_training/model.pkl
+

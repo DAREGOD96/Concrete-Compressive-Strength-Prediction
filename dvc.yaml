@@ -48,3 +48,19 @@ stages:
     # Output artifacts produced by the data_transformation stage
     outs:
       - artifacts/data_transformation
+
+  Model_training:
+    # Command to execute for the data_transformation stage
+    cmd:
+      - python src/Concrete_strength_prediction/pipeline/stage_04_model_training.py
+
+    # Dependencies required for the data_transformation stage
+    deps:
+      - src/Concrete_strength_prediction/pipeline/stage_04_model_training.py
+      - config/config.yaml
+      - params.yaml
+      - artifacts/data_transformation/train.csv
+      - artifacts/data_transformation/test.csv
+    # Output artifacts produced by the data_transformation stage
+    outs:
+      - artifacts/model_training
