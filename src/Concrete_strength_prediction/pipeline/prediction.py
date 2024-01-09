@@ -34,6 +34,8 @@ class PredictionPipeline:
         except Exception as e:
             logging.error(f"Prediction failed: {e}")
             raise CustomException(e, sys)
+        
+
 
         
 

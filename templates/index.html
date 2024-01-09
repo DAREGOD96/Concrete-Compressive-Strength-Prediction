@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concrete strength prediction</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login h1 {
+            text-align: center;
+            color: #3498db;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            border-color: #3498db;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        h2 {
+            text-align: center;
+            color: #3498db;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+            <h1>📚 Welcome to Check The strength of your Concrete!</h1>
+
+            <form action="{{ url_for('prediction')}}" method="post">
+
+                <div class="form-group">
+                    <label for="cement">Enter cement value here</label>
+                    <input class="form-control" type="number" id="cement" name="cement" placeholder="Enter cement value here" min="90" max="600" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="blast_furnace_slag">Enter blast_furnace_slag value here</label>
+                    <input class="form-control" type="number" id="blast_furnace_slag" name="blast_furnace_slag" placeholder="Enter blast_furnace_slag value here" min="0" max="400" required />
+                </div>
+
+                <!-- Add similar form groups for other columns -->
+
+                <div class="form-group">
+                    <label for="fly_ash">Enter Fly Ash value here</label>
+                    <input class="form-control" type="number" id="fly_ash" name="fly_ash" placeholder="Enter Fly Ash value here" min="0" max="250" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="water">Enter Water value here</label>
+                    <input class="form-control" type="number" id="water" name="water" placeholder="Enter Water value here" min="100" max="300" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="superplasticizer">Enter Superplasticizer value here</label>
+                    <input class="form-control" type="number" id="superplasticizer" name="superplasticizer" placeholder="Enter Superplasticizer value here" min="0" max="50" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="coarse_aggregate">Enter Coarse Aggregate value here</label>
+                    <input class="form-control" type="number" id="coarse_aggregate" name="coarse_aggregate" placeholder="Enter Coarse Aggregate value here" min="700" max="1500" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="fine_aggregate">Enter Fine Aggregate value here</label>
+                    <input class="form-control" type="number" id="fine_aggregate" name="fine_aggregate" placeholder="Enter Fine Aggregate value here" min="500" max="1000" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Enter Age value here</label>
+                    <input class="form-control" type="number" id="age" name="age" placeholder="Enter Age value here" min="1" max="365" required />
+                </div>
+
+                <div class="form-group text-center">
+                    <input class="btn btn-primary" type="submit" value="Submit" required />
+                </div>
+            </form>
+
+            <section id="prediction-result">
+                <h2>
+                    The prediction is <strong>{{prediction}}</strong>
+                </h2>
+            </section>
+    
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
