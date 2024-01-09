@@ -74,3 +74,24 @@ def save_object(file_path: str,obj, verbose: bool = True):
 
     except Exception as e:
         raise CustomException(e, sys)
+    
+def load_object(file_path):
+    """
+    Load and return a Python object from the specified file.
+
+    Parameters:
+    - file_path (str): The path to the file containing the serialized object.
+
+    Returns:
+    - object: The deserialized Python object.
+
+    Raises:
+    - CustomException: If there is an error during the loading process.
+    """
+    try:
+        with open(file_path, "rb") as file_obj:
+            return pickle.load(file_obj)
+        logging.info(f"loading the pickle file {file_obj} was successfull")
+    except Exception as e:
+        logging.error(f"Error loading object from file: {file_path}. Error: {e}")
+        raise CustomException(e, sys)
